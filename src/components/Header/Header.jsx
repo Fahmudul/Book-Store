@@ -14,6 +14,12 @@ const Header = () => {
       <li className="mr-4  px-5 py-3 text-lg rounded-lg">
         <NavLink to="/pagestoread">Pages to Read</NavLink>
       </li>
+      <li className="mr-4  px-5 py-3 text-lg rounded-lg">
+        <NavLink to="/arrivalbook">New Arrival</NavLink>
+      </li>
+      <li className="mr-4  px-5 py-3 text-lg rounded-lg">
+        <NavLink to="/review">Customer Review</NavLink>
+      </li>
     </>
   );
   return (
@@ -49,8 +55,12 @@ const Header = () => {
         <ul className="  menu-horizontal px-1 ">{link}</ul>
       </div>
       <div className="navbar-end ">
-        <a className="btn bg-[#23BE0A]   text-white font-bold text-lg mr-3">Sign In</a>
-        <a className="btn bg-[#59c6d2] hidden lg:flex text-white font-bold text-lg ">Sign Up</a>
+        <a className="btn bg-[#23BE0A]   text-white font-bold text-lg mr-3">
+          Sign In
+        </a>
+        <a className="btn bg-[#59c6d2] hidden lg:flex text-white font-bold text-lg ">
+          Sign Up
+        </a>
       </div>
     </div>
   );
