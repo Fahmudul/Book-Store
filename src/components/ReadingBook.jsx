@@ -17,7 +17,7 @@ const ReadingBook = ({ book }) => {
   } = book;
   console.log(book);
   return (
-    <div className="border-2 w-full flex flex-col lg:flex-row justify-between gap-4 lg:gap-6 p-2 lg:p-6">
+    <div className="border-2 w-full flex flex-col lg:flex-row justify-between gap-4 lg:gap-6 p-2 lg:p-6 rounded-2xl">
       <div className="w-full lg:w-[300px] mx-auto lg:mx-0  rounded-3xl">
         <img
           src={image}
@@ -26,7 +26,9 @@ const ReadingBook = ({ book }) => {
         />
       </div>
       <div className="flex-grow">
-        <h1 className="text-3xl font-bold lg:text-left text-center">{bookName}</h1>
+        <h1 className="text-3xl font-bold lg:text-left text-center">
+          {bookName}
+        </h1>
         <p className="font-medium mt-4 mb-5 text-xl text-[#424242] lg:text-left text-center">
           By : {`${author}`}
         </p>

@@ -3,12 +3,24 @@ import { Link, Outlet } from "react-router-dom";
 
 const ListedBooks = () => {
   const [active, setActive] = useState(0);
+  const getOptionValue = () => {
+    let optionName = document.getElementById("list").value;
+    console.log(optionName);
+  };
   return (
     <>
       <div className="w-[87%] mx-auto ">
         <h1 className="lg:text-4xl  text-2xl flex items-center justify-center font-bold lg:mt-[100px] mt-8 rounded-2xl h-[50px] lg:h-[100px] bg-[#f3f3f3]">
           Books
         </h1>
+        <div className="border-2 flex justify-center items-center text-lg">Sort by : 
+          <select id="list" onChange={() => getOptionValue()} className="ml-2 border-2 px-3 flex justify-center item py-2 bg-[#23BE0A] text-white border-none rounded-xl outline-none text-lg font-semibold">
+            <option value="default">Default</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="mystery">Mystery</option>
+            <option value="young">Young Adult</option>
+          </select>
+        </div>
         <div className="flex mt-6 w-full items-center overflow-x-auto overflow-y-hidden flex-nowrap dark:bg-gray-100 dark:text-gray-800 border-b-2">
           <Link
             to=""

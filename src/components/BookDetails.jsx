@@ -3,15 +3,12 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { getBooks, saveReadBook, saveWishListdBook } from "./localStorage";
 
 const BookDetails = () => {
-  
   const data = useLoaderData();
   const bookData = Object.values(JSON.parse(data));
   const { singlebookId } = useParams();
   const singleBook = bookData.find((book) => book.bookId == singlebookId);
-  //   console.log(singleBook);
   const handleReadBook = (bookName) => {
     saveReadBook(bookName);
-    // setReadBook(bookName);
   };
   const handleWishlistBook = (bookName) => {
     saveWishListdBook(bookName);

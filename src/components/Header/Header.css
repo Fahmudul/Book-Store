@@ -9,3 +9,12 @@ ul li a.active{
     font-size: 1.125rem; 
     border-radius: 0.5rem;
 }
+
+@media screen and (max-width:600px){
+    ul li a.active{
+        border:2px solid #23BE0A;
+        padding: 3px 5px;
+        color: #23BE0A;
+        width: 100%;
+    }
+}
