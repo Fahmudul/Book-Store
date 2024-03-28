@@ -18,7 +18,7 @@ const Header = () => {
         <NavLink to="/arrivalbook">New Arrival</NavLink>
       </li>
       <li className="mr-4  px-5 py-3 text-lg rounded-lg">
-        <NavLink to="/review">Customer Review</NavLink>
+        <NavLink to="/review">Review</NavLink>
       </li>
     </>
   );

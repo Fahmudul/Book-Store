@@ -12,11 +12,13 @@ import PagesToRead from "./components/PagesToRead.jsx";
 import ArrivalBooks from "./components/ArrivalBooks.jsx";
 import Review from "./components/Review.jsx";
 import { Toaster } from "react-hot-toast";
+import NotFound from "../NotFound.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: "/",
@@ -67,6 +69,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router}></RouterProvider>
     <Toaster></Toaster>
-
   </React.StrictMode>
 );

@@ -31,24 +31,19 @@ export const saveReadBook = (book) => {
 export const saveWishListdBook = (book, id) => {
   let books = getWishListBooks();
   const readListBooks = getBooks();
-  // console.log(readListBooks);
 
-  // Check if the book is already in the wishlist
   const isExistBook = books.find((blg) => blg.bookId == id);
 
   const isExistReadListBook = readListBooks.find(
     (readListBook) => readListBook.bookId == id
   );
   if (isExistReadListBook) {
-    // Check if the book is also in the read list
     return toast.error("Already read the book");
   }
   if (isExistBook) {
-    // Book is in the read list, alert and return
     return toast.error("Already added in the wishList");
   }
 
-  // Book not in wishlist or read list, add to wishlist
   books.push(book);
   localStorage.setItem("wish-books", JSON.stringify(books));
   return toast.success("Successfully added in wishlists");
