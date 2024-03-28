@@ -1,24 +1,66 @@
-import { useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { getBooks } from "./localStorage";
 
+export const HandleOptionValue = createContext();
 const ListedBooks = () => {
+  const [readBook, setReadBook] = useState([]);
+  const [displayReadBook, setDisplayReadBook] = useState([]);
+  useEffect(() => {
+    const readListBook = getBooks();
+
+    setReadBook(readListBook);
+    setDisplayReadBook(readListBook);
+  }, []);
+
+  const sortBooksByRatingDescending = (books, typeOfDescending) => {
+    return books.sort((a, b) => b[typeOfDescending] - a[typeOfDescending]);
+  };
+  const handleBookFilter = (filter) => {
+    if (filter === "default") {
+      setDisplayReadBook(readBook);
+    } else if (filter === "totalPages") {
+      const sortedBooks = sortBooksByRatingDescending(
+        [...readBook],
+        "totalPages"
+      );
+      setDisplayReadBook(sortedBooks);
+    } else if (filter === "rating") {
+      const sortedBooks = sortBooksByRatingDescending([...readBook], "rating");
+      setDisplayReadBook(sortedBooks);
+    } else if (filter === "yearOfPublishing") {
+      const sortedBooks = sortBooksByRatingDescending(
+        [...readBook],
+        "yearOfPublishing"
+      );
+      setDisplayReadBook(sortedBooks);
+    }
+  };
+
   const [active, setActive] = useState(0);
   const getOptionValue = () => {
-    let optionName = document.getElementById("list").value;
-    console.log(optionName);
+    let optionValue = document.getElementById("list").value;
+
+    handleBookFilter(optionValue);
   };
+
   return (
     <>
       <div className="w-[87%] mx-auto ">
         <h1 className="lg:text-4xl  text-2xl flex items-center justify-center font-bold lg:mt-[100px] mt-8 rounded-2xl h-[50px] lg:h-[100px] bg-[#f3f3f3]">
           Books
         </h1>
-        <div className="border-2 flex justify-center items-center text-lg">Sort by : 
-          <select id="list" onChange={() => getOptionValue()} className="ml-2 border-2 px-3 flex justify-center item py-2 bg-[#23BE0A] text-white border-none rounded-xl outline-none text-lg font-semibold">
+        <div className="border-2 flex justify-center items-center text-lg">
+          Sort by :
+          <select
+            id="list"
+            onChange={() => getOptionValue()}
+            className="ml-2 border-2 px-3 flex justify-center item py-2 bg-[#23BE0A] text-white border-none rounded-xl outline-none text-lg font-semibold"
+          >
             <option value="default">Default</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="mystery">Mystery</option>
-            <option value="young">Young Adult</option>
+            <option value="totalPages">Total Pages</option>
+            <option value="rating">Rating</option>
+            <option value="yearOfPublishing">Publish Year</option>
           </select>
         </div>
         <div className="flex mt-6 w-full items-center overflow-x-auto overflow-y-hidden flex-nowrap dark:bg-gray-100 dark:text-gray-800 border-b-2">
@@ -70,7 +112,9 @@ const ListedBooks = () => {
             <span>Wishlist Books</span>
           </Link>
         </div>
-        <Outlet></Outlet>
+        <HandleOptionValue.Provider value={displayReadBook}>
+          <Outlet></Outlet>
+        </HandleOptionValue.Provider>
       </div>
     </>
   );

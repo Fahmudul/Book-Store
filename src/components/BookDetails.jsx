@@ -10,8 +10,8 @@ const BookDetails = () => {
   const handleReadBook = (bookName) => {
     saveReadBook(bookName);
   };
-  const handleWishlistBook = (bookName) => {
-    saveWishListdBook(bookName);
+  const handleWishlistBook = (bookName, id) => {
+    saveWishListdBook(bookName, id);
   };
   const {
     bookId,
@@ -79,7 +79,7 @@ const BookDetails = () => {
             Read
           </button>
           <button
-            onClick={() => handleWishlistBook(singleBook)}
+            onClick={() => handleWishlistBook(singleBook, bookId)}
             className="btn text-white bg-[#50b1c9] w-[128px] h-[57px] flex items-center justify-center text-lg"
           >
             Wishlist

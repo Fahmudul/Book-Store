@@ -1,22 +1,11 @@
-import { useEffect, useState } from "react";
-import { getBooks } from "./localStorage";
+import { useContext } from "react";
+// import { getBooks } from "./localStorage";
 import ReadingBook from "./ReadingBook";
+import { HandleOptionValue } from "./ListedBooks";
 
 const ReadBooks = () => {
-  const [readBook, setReadBook] = useState([]);
-  const [displayReadBook, setDisplayReadBook] = useState([]);
-  //     const [wishlistBook, setWishlistBook] = useState([]);
-
-  const handleBookFilter = (filter) => {
-    
-  }
-
-
-  useEffect(() => {
-    const readListBook = getBooks();
-    setReadBook(readListBook);
-    setDisplayReadBook(readListBook);
-  }, []);
+  let displayReadBook = useContext(HandleOptionValue);
+  console.log(displayReadBook);
   return (
     <div className="w-full mx-auto mt-4 lg:mt-8 flex flex-col gap-5">
       {displayReadBook.map((book) => (

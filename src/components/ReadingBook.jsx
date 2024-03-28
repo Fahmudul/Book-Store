@@ -15,7 +15,7 @@ const ReadingBook = ({ book }) => {
     publisher,
     yearOfPublishing,
   } = book;
-  console.log(book);
+  // console.log(book);
   return (
     <div className="border-2 w-full flex flex-col lg:flex-row justify-between gap-4 lg:gap-6 p-2 lg:p-6 rounded-2xl">
       <div className="w-full lg:w-[300px] mx-auto lg:mx-0  rounded-3xl">

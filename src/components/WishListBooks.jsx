@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { getBooks } from "./localStorage";
+import { getBooks, getWishListBooks } from "./localStorage";
 import WishListBook from "./WishListBook";
 
 const WishListBooks = () => {
   const [wishlistBook, setWishlistBook] = useState([]);
 
   useEffect(() => {
-    const wishListBooks = getBooks();
+    const wishListBooks = getWishListBooks();
     setWishlistBook(wishListBooks);
   }, []);
   // console.log(wishlistBook);
